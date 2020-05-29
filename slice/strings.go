@@ -8,7 +8,10 @@ package slice
 // @param rows 切片
 // @param pointer 位置
 // @return value 当前位置的值
-func GetValue(rows []string, pointer int) (value string) {
+func GetStringValue(rows []string, pointer int) (value string) {
+	if pointer < 0 {
+		return ""
+	}
 	if len(rows) > pointer {
 		return rows[pointer]
 	}
