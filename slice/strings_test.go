@@ -10,7 +10,7 @@ import (
 )
 
 func TestGetStringValue(t *testing.T) {
-	var testStringSlice = []string{
+	var testStringSlice = Strings{
 		"A1",
 		"A2",
 		"A3",
@@ -28,7 +28,7 @@ func TestGetStringValue(t *testing.T) {
 		{4, ""},
 	}
 	for _, test := range testCases {
-		get := GetStringValue(testStringSlice, test.pointer)
+		get := testStringSlice.GetValue(test.pointer)
 		if get != test.expect {
 			t.Errorf("slice: %+v, pointer: %d, expect: %s, but get %s", testStringSlice, test.pointer, test.expect, get)
 		}

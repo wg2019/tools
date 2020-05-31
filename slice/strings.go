@@ -5,15 +5,17 @@
  */
 package slice
 
+type Strings []string
+
 // @param rows 切片
 // @param pointer 位置
 // @return value 当前位置的值
-func GetStringValue(rows []string, pointer int) (value string) {
+func (s Strings) GetValue(pointer int) (value string) {
 	if pointer < 0 {
 		return ""
 	}
-	if len(rows) > pointer {
-		return rows[pointer]
+	if len(s) > pointer {
+		return s[pointer]
 	}
 	return ""
 }
