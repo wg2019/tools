@@ -5,11 +5,12 @@
  */
 package slice
 
+// strings slice
 type Strings []string
 
-// @param rows 切片
-// @param pointer 位置
-// @return value 当前位置的值
+// rows 切片
+// pointer 位置
+// value 当前位置的值
 func (s Strings) GetValue(pointer int) (value string) {
 	if pointer < 0 {
 		return ""
@@ -18,4 +19,17 @@ func (s Strings) GetValue(pointer int) (value string) {
 		return s[pointer]
 	}
 	return ""
+}
+
+// remote duplicates, return new strings slice
+func (s Strings) RemoteDuplicates() (newS Strings) {
+	stringsMap := make(map[string]int)
+	newS = make([]string, 0)
+	for pointer, value := range s {
+		if _, ok := stringsMap[value]; !ok {
+			newS = append(newS, value)
+		}
+		stringsMap[value] = pointer
+	}
+	return newS
 }

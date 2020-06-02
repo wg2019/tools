@@ -34,3 +34,18 @@ func TestGetStringValue(t *testing.T) {
 		}
 	}
 }
+
+func TestStrings_RemoteDuplicates(t *testing.T) {
+	testCases := []struct {
+		oldSlice Strings
+		newSlice Strings
+	}{
+		{Strings{}, Strings{}},
+		{Strings{"a"}, Strings{"a"}},
+		{Strings{"a", "b"}, Strings{"a", "b"}},
+		{Strings{"a", "b", "a"}, Strings{"a", "b"}},
+		{Strings{"a", "b", "a", "c", "c"}, Strings{"a", "b", "c"}},
+	}
+	for _, testCase := range testCases {
+	}
+}
