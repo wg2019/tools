@@ -1,11 +1,12 @@
 /**
- * @Author: wg
+ * @Author: wg2019
  * @Date: 2020/5/29 6:37 下午
  * @Desc:
  */
 package slice
 
 import (
+	"github.com/goinaction/code/chapter2/sample/search"
 	"testing"
 )
 
@@ -46,6 +47,7 @@ func TestStrings_RemoteDuplicates(t *testing.T) {
 		{Strings{"a", "b", "a"}, Strings{"a", "b"}},
 		{Strings{"a", "b", "a", "c", "c"}, Strings{"a", "b", "c"}},
 	}
-	for _, testCase := range testCases {
-	}
+	t.Logf("testCases: %+v", testCases)
+	search.Run("aaa")
+
 }
