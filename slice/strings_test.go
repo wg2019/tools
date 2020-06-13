@@ -6,7 +6,6 @@
 package slice
 
 import (
-	"github.com/goinaction/code/chapter2/sample/search"
 	"testing"
 )
 
@@ -47,7 +46,18 @@ func TestStrings_RemoteDuplicates(t *testing.T) {
 		{Strings{"a", "b", "a"}, Strings{"a", "b"}},
 		{Strings{"a", "b", "a", "c", "c"}, Strings{"a", "b", "c"}},
 	}
-	t.Logf("testCases: %+v", testCases)
-	search.Run("aaa")
-
+	for _, testCase := range testCases {
+		remoteDuplicates := testCase.oldSlice.RemoteDuplicates()
+		remoteDuplicatesLength := len(remoteDuplicates)
+		if remoteDuplicatesLength != len(testCase.newSlice) {
+			t.Errorf("length not equal, expect: %d, but got: %d", remoteDuplicatesLength, len(testCase.newSlice))
+			return
+		}
+		for i := 0; i < remoteDuplicatesLength; i++ {
+			if remoteDuplicates[i] != testCase.newSlice[i] {
+				t.Errorf("value not equal, i: %d, expect: %s, but got: %s", i, remoteDuplicates[i], testCase.newSlice[i])
+				return
+			}
+		}
+	}
 }
